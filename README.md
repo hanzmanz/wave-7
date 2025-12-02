@@ -1,2 +1,3 @@
 # wave-7
-Wave 7 letphil homework
+Wave 7 letphil homework and lessons
+
