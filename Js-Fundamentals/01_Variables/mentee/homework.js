@@ -36,6 +36,36 @@ console.log(`--- PROFILE CARD ---\nName: ${fullName}\nAge: ${profileAge}\nCountr
 
 favoriteHobby = "Play football";
 
+
+
 console.log(`--- PROFILE CARD ---\nName: ${fullName}\nAge: ${profileAge}\nCountry: ${country}\nHobby: ${favoriteHobby}\nIs student? ${isStudent}`)
 
 // console.log(`Name: ${fullName}`);
+
+
+let name = "Hannan"
+
+function person(){
+let lastName = "Bahrin"
+console.log(lastName)    
+}
+
+if (true){
+let age = 25;
+const color = "Blue";
+console.log(age);
+console.log(color);
+}
+
+
+let outside = "I am global";
+
+if (true){
+    console.log("Global", outside)
+}
+
+if (true){
+    let inside = "hello world";
+}
+
+console.log(inside);
