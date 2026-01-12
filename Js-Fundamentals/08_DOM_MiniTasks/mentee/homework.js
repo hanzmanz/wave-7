@@ -4,7 +4,28 @@
 
 // STEP 1: Select the heading element with id "moviesTitle" and store
 //         it in a variable.
+const moviesTitleEl = document.getElementById("moviesTitle");
+const moviesInfoEl = document.getElementById("moviesInfo");
+const moviesListEl = document.getElementById("moviesList");
 
+moviesTitleEl.textContent = "Wave 7 Movie List"
+
+let movieCount = moviesListEl.children.length;
+
+moviesInfoEl.textContent = `You currently have ${movieCount} favorite movies in your list.`;
+
+const newListElement = document.createElement("li");
+newListElement.textContent = "Bullet Train";
+newListElement.classList.add("movie-item");
+moviesListEl.appendChild(newListElement);
+
+const firstMovie = moviesListEl.querySelector(".movie-item");
+if (firstMovie) {
+  firstMovie.remove();
+}
+
+movieCount = moviesListEl.children.length;
+moviesInfoEl.textContent = `You currently have ${movieCount} favorite movies in your list.`;
 // STEP 2: Select the paragraph with id "moviesInfo" and store it
 //         in a variable.
 
@@ -32,3 +53,4 @@
 
 // STEP 9: (Optional) After adding/removing, update moviesInfo again
 //         to show the new total number of movies.
+
