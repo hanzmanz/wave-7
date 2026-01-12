@@ -73,7 +73,29 @@
     <!-- Set type="text" -->
     <!-- Give it id="previewInput" -->
     <!-- Add a placeholder like "Start typing here..." -->
-
+      <main class="page">
+        <section class="card" id="eventCard">
+          <h1 id="cardTitle">DOM + Events</h1>
+          <p id="cardDescription">This is A DOM + events playground</p>
+          <div class="button-row">
+            <button id="changeTitleBtn">Change Title</button>
+            <button id="toggleHighlightBtn">Toggle Highlight</button>
+          </div>
+          <div class="counter-section">
+            <h2>Click Counter</h2>
+            <p><span id="counterValue">0</span></p>
+            <button id="incrementBtn">+1</button>
+          </div>
+          <div class="live-preview-section">
+            <h2>Live Preview</h2>
+            <label for="previewInput">Type something:</label>
+            <input type="text" id="previewInput" placeholder="Start typing here...">
+            <p><span id="previewText">Nothing typed yet.</span></p>
+            <p class="hint">script.js and testing interactions</p>
+          </div>
+        </section>
+      </main>
+      <script src="homework.js"></script>
     <!-- STEP 16 — Add the preview output -->
     <!-- Add a <p> element -->
     <!-- Inside it, add a <span> -->

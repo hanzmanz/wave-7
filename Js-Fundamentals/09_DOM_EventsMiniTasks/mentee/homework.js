@@ -21,7 +21,18 @@
 //
 // STEP 2: (Optional) console.log some of these variables to make
 //         sure you selected them correctly.
+const eventCardEl = document.getElementById("eventCard");
+const cardTitleEl = document.getElementById("cardTitle");
+const cardDescriptionEl = document.getElementById("cardDescription");
+const changeTitleBtnEl = document.getElementById("changeTitleBtn");
+const toggleHighlightBtnEl = document.getElementById("toggleHighlightBtn");
+const counterValueEl = document.getElementById("counterValue");
+const incrementBtnEl = document.getElementById("incrementBtn");
+const previewInputEl = document.getElementById("previewInput");
+const previewTextEl = document.getElementById("previewText");
 
+console.log(eventCardEl);
+console.log(changeTitleBtnEl);
 // ==============================================
 // TASK 2 – CLICK EVENT: CHANGE TITLE TEXT
 // ==============================================
@@ -32,7 +43,10 @@
 //           for example "Wave 7 – Events in Action".
 //         - (Optional) Also update the description to mention that
 //           the title was changed by clicking the button.
-
+changeTitleBtnEl.addEventListener("click", function() {
+    cardTitleEl.textContent = "Wave 7 - Events in Action";
+    cardDescriptionEl.textContent = "The title was changed by clicking the 'Change Title' button"
+});
 // ==============================================
 // TASK 3 – CLICK EVENT: TOGGLE HIGHLIGHT CLASS
 // ==============================================
@@ -41,7 +55,9 @@
 //         Inside the event listener function:
 //         - Use classList.toggle("event-card-highlight") on the main card.
 //           This should add/remove the highlight effect each time you click.
-
+toggleHighlightBtnEl.addEventListener("click", function() {
+    eventCardEl.classList.toggle("event-card-highlight");
+});
 // ==============================================
 // TASK 4 – CLICK EVENT: COUNTER +1
 // ==============================================
@@ -54,7 +70,11 @@
 //         - Increase the counter variable by 1.
 //         - Update the textContent of the counter span in the page
 //           so it always shows the current count.
-
+let counterValue = 0;
+incrementBtnEl.addEventListener("click", function() {
+    counterValue += 1;
+    counterValueEl.textContent = counterValue;
+});
 // ==============================================
 // TASK 5 – INPUT EVENT: LIVE PREVIEW
 // ==============================================
@@ -66,3 +86,12 @@
 //         - If the value is an empty string, set the preview text
 //           to "Nothing typed yet.".
 //         - Otherwise, set the preview text to exactly what the user typed.
+previewInputEl.addEventListener("input", function() {
+    const inputValue = previewInputEl.value;
+
+    if (inputValue.trim() === "") {
+        previewTextEl.textContent = "Nothing typed yet.";
+    } else {
+        previewTextEl.textContent = inputValue;
+    }
+});
