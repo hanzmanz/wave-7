@@ -32,7 +32,7 @@ tasks.forEach((task, index) => console.log(`${index + 1}. ${task}`));
 //         that only keeps tasks with a length greater than, for example, 15 characters.
 //         (task.length > 15)
 
-longTasks = tasks.filter((task) => task.length > 15);
+const longTasks = tasks.filter((task) => task.length > 15);
 
 // STEP 8: Log longTasks to see which tasks were kept.
 console.log(longTasks);
