@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>localStorage Mini Tasks</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- STEP 1 — Create the main page container -->
+    <!-- Add a <main> element with a class of "page" -->
+    
+
+    <!-- STEP 2 — Create the main storage card -->
+    <!-- Inside <main>, add a <section> -->
+    <!-- Give it a class of "card" and an id of "storageCard" -->
+
+    <!-- STEP 3 — Add the card title -->
+    <!-- Add an <h1> element -->
+    <!-- class: "card-title" -->
+    <!-- Text: "localStorage Basics" -->
+
+    <!-- STEP 4 — Add the card subtitle -->
+    <!-- Add a <p> element -->
+    <!-- class: "card-subtitle" -->
+    <!-- Explain that data survives refresh -->
+
+    <!-- STEP 5 — Create the first block (Name Saver) -->
+    <!-- Add a <section> with class "block" -->
+
+    <!-- STEP 6 — Add Name Saver title -->
+    <!-- Inside the block, add an <h2> --> 
+    <!-- Text: "1. Name Saver" -->
+
+    <!-- STEP 7 — Add the name label and input -->
+    <!-- Add a <label> -->
+    <!-- class: "field-label" -->
+    <!-- for: "nameInput" -->
+    <!-- Add an <input> -->
+    <!-- id: "nameInput" -->
+    <!-- type: "text" -->
+    <!-- class: "text-input" -->
+
+   
+
+    <!-- STEP 8 — Create the button row for name actions -->
+    <!-- Add a <div> with class "button-row" -->
+
+    <!-- STEP 9 — Add name buttons -->
+    <!-- Add three <button> elements -->
+    <!-- ids: "saveNameBtn", "loadNameBtn", "clearNameBtn" -->
+    <!-- Use btn styles: primary, ghost -->
+
+    <!-- STEP 10 — Add the saved name display -->
+    <!-- Add a <p> with class "status-line" -->
+    <!-- Inside it, add a <span> -->
+    <!-- id: "savedNameDisplay" -->
+
+    <!-- STEP 11 — Create the second block (Visit Counter) -->
+    <!-- Add a <section> with class "block" -->
+
+    <!-- STEP 12 — Add Visit Counter title -->
+    <!-- Add an <h2> -->
+    <!-- Text: "2. Visit Counter" -->
+
+    <!-- STEP 13 — Add visit count display -->
+    <!-- Add a <p> with class "status-line" -->
+    <!-- Include a <span> -->
+    <!-- id: "visitCountText" -->
+
+    <!-- STEP 14 — Create the third block (Card Theme) -->
+    <!-- Add a <section> with class "block" -->
+ <main class="page">
+      <section class="card" id="storageCard">
+      <h1 class="card-title">localStorage Basics</h1>
+      <p class="card-subtitle">
+        Explain that data survives refresh
+      </p>
+
+      <section class="block">
+        <h2>
+          1.- Name Saver
+        </h2>
+        <label for="nameInput" class="field-label">Name</label>
+        <input type="text" id="nameInput" class="text-input" placeholder="Type your name">
+
+        <div class="button-row">
+          <button id="saveNameBtn" class="btn primary">Save Name</button>
+          <button id="loadNameBtn" class="btn ghost">Load Name</button>
+          <button id="clearNameBtn" class="btn ghost">Clear Name</button>
+</div>
+          <p class="status-line">
+            Saved Name: <span id="saveNameDisplay">None yet</span>
+          </p>
+            </section>
+          <section class="block">
+            <h2>
+              2. Visit Counter
+            </h2>
+            <p class="status-line">
+              You have opened this page
+              <span id="visitCountText">0</span>
+              time(s)
+            </p>
+          </section>
+        
+      <section class="block">
+          <h2>3. Card Theme</h2>
+          <p class="status-line">
+            Current Theme <span id="themeStatusText"></span>
+          </p>
+          
+          <button id="toggleThemeBtn" class="btn secondary">Toggle Card Theme</button>
+           </section>
+          <p class="hint">  Open <code>script.js</code> and follow each STEP. Use DevTools →
+          Application → localStorage to see your saved keys.</p>
+      </section>
+   
+    </main>
+    <!-- STEP 15 — Add Card Theme title -->
+    <!-- Add an <h2> -->
+    <!-- Text: "3. Card Theme" -->
+
+    <!-- STEP 16 — Add theme status display -->
+    <!-- Add a <p> with class "status-line" -->
+    <!-- Include a <span> -->
+    <!-- id: "themeStatusText" -->
+
+    <!-- STEP 17 — Add theme toggle button -->
+    <!-- Add a <button> -->
+    <!-- id: "toggleThemeBtn" -->
+    <!-- class: "btn secondary" -->
+    <!-- Text: "Toggle Card Theme" -->
+
+    <!-- STEP 18 — Add a hint paragraph -->
+    <!-- Add a <p> element -->
+    <!-- class: "hint" -->
+    <!-- Mention script.js and localStorage DevTools -->
+
+    <!-- STEP 19 — Link JavaScript -->
+    <!-- Add a <script> tag at the bottom of the body -->
+    <!-- src="script.js" -->
+  <script src="script.js"></script>
+  </body>
+  
+</html>
