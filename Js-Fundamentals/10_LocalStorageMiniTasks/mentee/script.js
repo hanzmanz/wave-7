@@ -18,7 +18,7 @@
 //         - savedNameDisplay (id "savedNameDisplay")
 
 const nameInput = document.getElementById("nameInput");
-const saveNamebtn = document.getElementById("saveNameBtn");
+const saveNameBtn = document.getElementById("saveNameBtn");
 const loadNameBtn = document.getElementById("loadNameBtn");
 const clearNameBtn = document.getElementById("clearNameBtn");
 const savedNameDisplay = document.getElementById("savedNameDisplay");
@@ -32,17 +32,17 @@ const savedNameDisplay = document.getElementById("savedNameDisplay");
 //         - (Optional) If the input is empty, you can decide not to save
 //           or show a message like "none yet".
 
-saveNamebtn.addEventListener("click", function(){
+saveNameBtn.addEventListener("click", function() {
 
     const nameValue = nameInput.value.trim();
     if(nameValue === ""){
-        savedNameDisplay.textContent = "None yet";
+        savedNameDisplay.textContent = "none yet";
         localStorage.removeItem("savedName");
         return;
-    }
-    localStorage.setItem("savedName",nameValue);
-    savedNameDisplay.textContent = nameValue;
-    
+    } else {
+        localStorage.setItem("savedName",nameValue);
+        savedNameDisplay.textContent = nameValue;
+    }    
 } );
 //
 // STEP 3: Add a "click" event listener to loadNameBtn.
@@ -55,7 +55,7 @@ saveNamebtn.addEventListener("click", function(){
 loadNameBtn.addEventListener("click", function() {
     const savedName = localStorage.getItem("savedName");
     if (savedName === null) {
-        savedNameDisplay.textContent = "None yet";
+        savedNameDisplay.textContent = "none yet";
     } else {
         savedNameDisplay.textContent = savedName;
         nameInput.value = savedName;
@@ -95,14 +95,14 @@ clearNameBtn.addEventListener("click", function() {
 //          so it shows the current count.
 
 const visitCountText = document.getElementById("visitCountText");
-const visitCount = localStorage.getItem("visitCount");
+let visitCount = localStorage.getItem("visitCount");
 if (visitCount === null) {
     visitCount = "0";
 }
 
 // countNum = Number.isNaN(countNum) ? 0 : countNum
 
-const countNum = Number(visitCount);
+let countNum = Number(visitCount);
 if (Number.isNaN(countNum)) {
     countNum = 0
 }
@@ -149,3 +149,26 @@ const toggleThemeBtn = document.getElementById("toggleThemeBtn");
 const themeStatusText = document.getElementById("themeStatusText");
 
 let currentTheme = localStorage.getItem("cardTheme");
+
+if (currentTheme === "dark") {
+    mainCard.classList.add("card-dark");
+    themeStatusText.textContent = "dark";
+} else {
+    mainCard.classList.remove("card-dark");
+    themeStatusText.textContent = "light";
+};
+
+toggleThemeBtn.addEventListener("click", function() {
+    let currentTheme = localStorage.getItem("cardTheme");
+    if (currentTheme === "light" || currentTheme === null) {
+        currentTheme = "dark";
+        mainCard.classList.add("card-dark");
+        themeStatusText.textContent = "dark";
+        localStorage.setItem("cardTheme", "dark");
+    } else {
+        currentTheme = "light";
+        mainCard.classList.remove("card-dark");
+        themeStatusText.textContent = "light";
+        localStorage.setItem("cardTheme", "light");
+    }
+});
