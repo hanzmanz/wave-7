@@ -38,6 +38,7 @@ saveNamebtn.addEventListener("click", function(){
     if(nameValue === ""){
         savedNameDisplay.textContent = "None yet";
         localStorage.removeItem("savedName");
+        return;
     }
     localStorage.setItem("savedName",nameValue);
     savedNameDisplay.textContent = nameValue;
@@ -50,12 +51,30 @@ saveNamebtn.addEventListener("click", function(){
 //         - If it's null (nothing saved), set savedNameDisplay.textContent
 //           to "none yet".
 //         - Otherwise, show the saved value in savedNameDisplay.
+
+loadNameBtn.addEventListener("click", function() {
+    const savedName = localStorage.getItem("savedName");
+    if (savedName === null) {
+        savedNameDisplay.textContent = "None yet";
+    } else {
+        savedNameDisplay.textContent = savedName;
+        nameInput.value = savedName;
+    }
+});
+
+
 //
 // STEP 4: Add a "click" event listener to clearNameBtn.
 //         Inside the listener:
 //         - Use localStorage.removeItem("savedName").
 //         - Clear the input (set value to an empty string).
 //         - Set savedNameDisplay.textContent back to "none yet".
+
+clearNameBtn.addEventListener("click", function() {
+    localStorage.removeItem("savedName");
+    nameInput.value = "";
+    savedNameDisplay.textContent = "none yet"; 
+});
 
 // ==============================================
 // TASK 2 – VISIT COUNTER (RUNS ON PAGE LOAD)
@@ -74,6 +93,24 @@ saveNamebtn.addEventListener("click", function(){
 //
 // STEP 10: Update the textContent of visitCountText (id "visitCountText")
 //          so it shows the current count.
+
+const visitCountText = document.getElementById("visitCountText");
+const visitCount = localStorage.getItem("visitCount");
+if (visitCount === null) {
+    visitCount = "0";
+}
+
+// countNum = Number.isNaN(countNum) ? 0 : countNum
+
+const countNum = Number(visitCount);
+if (Number.isNaN(countNum)) {
+    countNum = 0
+}
+
+countNum = countNum + 1 ; 
+localStorage.setItem("visitCount",String(countNum));
+
+visitCountText.textContent = countNum;
 
 // ==============================================
 // TASK 3 – CARD THEME TOGGLE
@@ -105,3 +142,10 @@ saveNamebtn.addEventListener("click", function(){
 //              * remove "card-dark" class
 //              * update themeStatusText to "light"
 //              * save "light" in localStorage.
+
+
+const mainCard = document.getElementById("storageCard");
+const toggleThemeBtn = document.getElementById("toggleThemeBtn");
+const themeStatusText = document.getElementById("themeStatusText");
+
+let currentTheme = localStorage.getItem("cardTheme");
