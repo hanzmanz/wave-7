@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,6 @@
   <body>
     <!-- STEP 1 — Create the main page container -->
     <!-- Add a <main> element with a class of "page" -->
-    
 
     <!-- STEP 2 — Create the main storage card -->
     <!-- Inside <main>, add a <section> -->
@@ -28,7 +27,7 @@
     <!-- Add a <section> with class "block" -->
 
     <!-- STEP 6 — Add Name Saver title -->
-    <!-- Inside the block, add an <h2> --> 
+    <!-- Inside the block, add an <h2> -->
     <!-- Text: "1. Name Saver" -->
 
     <!-- STEP 7 — Add the name label and input -->
@@ -39,8 +38,6 @@
     <!-- id: "nameInput" -->
     <!-- type: "text" -->
     <!-- class: "text-input" -->
-
-   
 
     <!-- STEP 8 — Create the button row for name actions -->
     <!-- Add a <div> with class "button-row" -->
@@ -69,52 +66,54 @@
 
     <!-- STEP 14 — Create the third block (Card Theme) -->
     <!-- Add a <section> with class "block" -->
- <main class="page">
+    <main class="page">
       <section class="card" id="storageCard">
-      <h1 class="card-title">localStorage Basics</h1>
-      <p class="card-subtitle">
-        Explain that data survives refresh
-      </p>
+        <h1 class="card-title">localStorage Basics</h1>
+        <p class="card-subtitle">Explain that data survives refresh</p>
 
-      <section class="block">
-        <h2>
-          1.- Name Saver
-        </h2>
-        <label for="nameInput" class="field-label">Name</label>
-        <input type="text" id="nameInput" class="text-input" placeholder="Type your name">
+        <section class="block">
+          <h2>1.- Name Saver</h2>
+          <label for="nameInput" class="field-label">Name</label>
+          <input
+            type="text"
+            id="nameInput"
+            class="text-input"
+            placeholder="Type your name"
+          />
 
-        <div class="button-row">
-          <button id="saveNameBtn" class="btn primary">Save Name</button>
-          <button id="loadNameBtn" class="btn ghost">Load Name</button>
-          <button id="clearNameBtn" class="btn ghost">Clear Name</button>
-</div>
+          <div class="button-row">
+            <button id="saveNameBtn" class="btn primary">Save Name</button>
+            <button id="loadNameBtn" class="btn ghost">Load Name</button>
+            <button id="clearNameBtn" class="btn ghost">Clear Name</button>
+          </div>
           <p class="status-line">
             Saved Name: <span id="savedNameDisplay">None yet</span>
           </p>
-            </section>
-          <section class="block">
-            <h2>
-              2. Visit Counter
-            </h2>
-            <p class="status-line">
-              You have opened this page
-              <span id="visitCountText">0</span>
-              time(s)
-            </p>
-          </section>
-        
-      <section class="block">
+        </section>
+        <section class="block">
+          <h2>2. Visit Counter</h2>
+          <p class="status-line">
+            You have opened this page
+            <span id="visitCountText">0</span>
+            time(s)
+          </p>
+        </section>
+
+        <section class="block">
           <h2>3. Card Theme</h2>
           <p class="status-line">
             Current Theme <span id="themeStatusText"></span>
           </p>
-          
-          <button id="toggleThemeBtn" class="btn secondary">Toggle Card Theme</button>
-           </section>
-          <p class="hint">  Open <code>script.js</code> and follow each STEP. Use DevTools →
-          Application → localStorage to see your saved keys.</p>
+
+          <button id="toggleThemeBtn" class="btn secondary">
+            Toggle Card Theme
+          </button>
+        </section>
+        <p class="hint">
+          Open <code>script.js</code> and follow each STEP. Use DevTools →
+          Application → localStorage to see your saved keys.
+        </p>
       </section>
-   
     </main>
     <!-- STEP 15 — Add Card Theme title -->
     <!-- Add an <h2> -->
@@ -139,7 +138,6 @@
     <!-- STEP 19 — Link JavaScript -->
     <!-- Add a <script> tag at the bottom of the body -->
     <!-- src="script.js" -->
-  <script src="script.js"></script>
+    <script src="script.js"></script>
   </body>
-  
 </html>

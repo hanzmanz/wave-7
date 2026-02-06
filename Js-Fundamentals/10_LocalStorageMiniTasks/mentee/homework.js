@@ -30,33 +30,3 @@
 //         - Use localStorage.removeItem("favoriteQuote").
 //         - Clear the textarea (set value to an empty string).
 //         - Reset quoteDisplay.textContent to "No quote saved yet."
-const quoteInput = document.getElementById("quoteInput");
-const saveQuoteBtn = document.getElementById("saveQuoteBtn");
-const clearQuoteBtn = document.getElementById("clearQuoteBtn");
-const quoteDisplay = document.getElementById("quoteDisplay");
-
-let savedQuote = localStorage.getItem("favoriteQuote");
-
-if (savedQuote !== null) {
-    quoteDisplay.textContent = savedQuote;
-    quoteInput.value = savedQuote;
-} else {
-    quoteDisplay.textContent = "No quote saved yet.";
-};
-
-saveQuoteBtn.addEventListener("click", function() {
-    const quoteValue = quoteInput.value.trim();
-    
-    if (quoteValue === "") {
-        alert("Please enter a quote before saving.");
-    } else {
-        localStorage.setItem("favoriteQuote",quoteValue);
-        quoteDisplay.textContent = quoteValue;
-    }
-});
-
-clearQuoteBtn.addEventListener("click", function() {
-    localStorage.removeItem("favoriteQuote");
-    quoteInput.value = "";
-    quoteDisplay.textContent = "No quote saved yet."
-});

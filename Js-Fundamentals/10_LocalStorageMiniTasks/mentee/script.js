@@ -18,7 +18,7 @@
 //         - savedNameDisplay (id "savedNameDisplay")
 
 const nameInput = document.getElementById("nameInput");
-const saveNameBtn = document.getElementById("saveNameBtn");
+const saveNamebtn = document.getElementById("saveNameBtn");
 const loadNameBtn = document.getElementById("loadNameBtn");
 const clearNameBtn = document.getElementById("clearNameBtn");
 const savedNameDisplay = document.getElementById("savedNameDisplay");
@@ -32,18 +32,16 @@ const savedNameDisplay = document.getElementById("savedNameDisplay");
 //         - (Optional) If the input is empty, you can decide not to save
 //           or show a message like "none yet".
 
-saveNameBtn.addEventListener("click", function() {
-
-    const nameValue = nameInput.value.trim();
-    if(nameValue === ""){
-        savedNameDisplay.textContent = "none yet";
-        localStorage.removeItem("savedName");
-        return;
-    } else {
-        localStorage.setItem("savedName",nameValue);
-        savedNameDisplay.textContent = nameValue;
-    }    
-} );
+saveNamebtn.addEventListener("click", function () {
+  const nameValue = nameInput.value.trim();
+  if (nameValue === "") {
+    savedNameDisplay.textContent = "None yet";
+    localStorage.removeItem("savedName");
+    return;
+  }
+  localStorage.setItem("savedName", nameValue);
+  savedNameDisplay.textContent = nameValue;
+});
 //
 // STEP 3: Add a "click" event listener to loadNameBtn.
 //         Inside the listener:
@@ -52,16 +50,15 @@ saveNameBtn.addEventListener("click", function() {
 //           to "none yet".
 //         - Otherwise, show the saved value in savedNameDisplay.
 
-loadNameBtn.addEventListener("click", function() {
-    const savedName = localStorage.getItem("savedName");
-    if (savedName === null) {
-        savedNameDisplay.textContent = "none yet";
-    } else {
-        savedNameDisplay.textContent = savedName;
-        nameInput.value = savedName;
-    }
+loadNameBtn.addEventListener("click", function () {
+  const savedName = localStorage.getItem("savedName");
+  if (savedName === null) {
+    savedNameDisplay.textContent = "None yet";
+  } else {
+    savedNameDisplay.textContent = savedName;
+    nameInput.value = savedName;
+  }
 });
-
 
 //
 // STEP 4: Add a "click" event listener to clearNameBtn.
@@ -70,10 +67,10 @@ loadNameBtn.addEventListener("click", function() {
 //         - Clear the input (set value to an empty string).
 //         - Set savedNameDisplay.textContent back to "none yet".
 
-clearNameBtn.addEventListener("click", function() {
-    localStorage.removeItem("savedName");
-    nameInput.value = "";
-    savedNameDisplay.textContent = "none yet"; 
+clearNameBtn.addEventListener("click", function () {
+  localStorage.removeItem("savedName");
+  nameInput.value = "";
+  savedNameDisplay.textContent = "none yet";
 });
 
 // ==============================================
@@ -97,18 +94,18 @@ clearNameBtn.addEventListener("click", function() {
 const visitCountText = document.getElementById("visitCountText");
 let visitCount = localStorage.getItem("visitCount");
 if (visitCount === null) {
-    visitCount = "0";
+  visitCount = "0";
 }
 
 // countNum = Number.isNaN(countNum) ? 0 : countNum
 
 let countNum = Number(visitCount);
 if (Number.isNaN(countNum)) {
-    countNum = 0
+  countNum = 0;
 }
 
-countNum = countNum + 1 ; 
-localStorage.setItem("visitCount",String(countNum));
+countNum = countNum + 1;
+localStorage.setItem("visitCount", String(countNum));
 
 visitCountText.textContent = countNum;
 
@@ -143,7 +140,6 @@ visitCountText.textContent = countNum;
 //              * update themeStatusText to "light"
 //              * save "light" in localStorage.
 
-
 const mainCard = document.getElementById("storageCard");
 const toggleThemeBtn = document.getElementById("toggleThemeBtn");
 const themeStatusText = document.getElementById("themeStatusText");
@@ -151,24 +147,24 @@ const themeStatusText = document.getElementById("themeStatusText");
 let currentTheme = localStorage.getItem("cardTheme");
 
 if (currentTheme === "dark") {
+  mainCard.classList.add("card-dark");
+  themeStatusText.textContent = "dark";
+  console.log("switched to dark");
+} else {
+  mainCard.classList.remove("card-dark");
+  themeStatusText.textContent = "light";
+  localStorage.setItem("cardTheme", "light");
+}
+
+toggleThemeBtn.addEventListener("click", () => {
+  let currentTheme = localStorage.getItem("cardTheme") || "light";
+  if (currentTheme === "light") {
+    localStorage.setItem("cardTheme", "dark");
     mainCard.classList.add("card-dark");
     themeStatusText.textContent = "dark";
-} else {
+  } else {
+    localStorage.setItem("cardTheme", "light");
     mainCard.classList.remove("card-dark");
     themeStatusText.textContent = "light";
-};
-
-toggleThemeBtn.addEventListener("click", function() {
-    let currentTheme = localStorage.getItem("cardTheme");
-    if (currentTheme === "light" || currentTheme === null) {
-        currentTheme = "dark";
-        mainCard.classList.add("card-dark");
-        themeStatusText.textContent = "dark";
-        localStorage.setItem("cardTheme", "dark");
-    } else {
-        currentTheme = "light";
-        mainCard.classList.remove("card-dark");
-        themeStatusText.textContent = "light";
-        localStorage.setItem("cardTheme", "light");
-    }
+  }
 });

@@ -2,7 +2,8 @@
 // Each song will be an object with { title, artist, mood, link }
 //  Declare a variable named "playlist" and set it to an empty array
 // 🧪 Console log to confirm the playlist is initialized as an empty array
-
+const playlist = [];
+console.log(playlist);
 //  Step 2: Get references to all the DOM elements (HTML elements we interact with)
 //  Use document.getElementById() to store references to:
 // - title input        → id="title"
@@ -15,7 +16,25 @@
 // - shuffle button     → id="shuffleBtn"
 // - dark mode button   → id="toggleModeBtn"
 //  Console log to confirm all DOM elements were successfully selected
+const titleInput = document.getElementById("title");
+const artist = document.getElementById("artist");
+const link = document.getElementById("link");
+const mood = document.getElementById("mood");
+const form = document.getElementById("songForm");
+const playlistContainer = document.getElementById("playlist");
+const moodFilter = document.getElementById("filterMood");
+const shuffleBtn = document.getElementById("shuffleBtn");
+const toggleModeBtn = document.getElementById("toggleModeBtn");
 
+console.log(titleInput);
+console.log(artist);
+console.log(link);
+console.log(mood);
+console.log(form);
+console.log(playlistContainer);
+console.log(moodFilter);
+console.log(shuffleBtn);
+console.log(toggleModeBtn);
 // Step 3: Function to load the playlist from localStorage
 //  Define a function called loadPlaylist()
 // Inside the function:
@@ -24,14 +43,26 @@
 // - Then update the playlist array with the parsed data
 //  Console log to show the playlist loaded from localStorage
 //  Console log to show that no playlist data was found (if none exists)
-
+function loadPlaylist() {
+  const playlist = localStorage.getItem("customPlaylist");
+  if (playlist === null) {
+    console.log("No playlist data was found.");
+  } else {
+    JSON.parse(playlist);
+    console.log("Playlist loaded from localStorage:", playlist);
+  }
+};
 //  Step 4: Function to save the playlist into localStorage
 //  Define a function called savePlaylist()
 // Inside the function:
 // - Use JSON.stringify() to convert the playlist array to a string
 // - Use localStorage.setItem() to save it with the key "customPlaylist"
 //  Console log to confirm playlist was saved to localStorage
-
+function savePlaylist() {
+  const playlist = JSON.stringify(playlist);
+  localStorage.setItem("customPlaylist", playlist);
+  console.log("Playlist saved to localStorage:", playlist);
+};
 //  Step 5: Function to render the songs onto the screen
 //  Define a function called renderPlaylist(songsToRender)
 // Inside the function:
