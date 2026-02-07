@@ -54,7 +54,28 @@
     <!-- countryCapitalDisplay -->
     <!-- countryRegionDisplay -->
     <!-- countryPopulationDisplay -->
-
+      <main class="page">
+        <section class="card">
+          <h1>Country Info Viewer (Axios)</h1>
+          <p class="subtitle">
+            Use Axios and async/await to fetch and display country information.
+          </p>
+          <div class="field-row">
+            <label for="countryInput">Country Name</label>
+            <input type="text" id="countryInput" placeholder="e.g. Brunei" />
+            <button id="searchCountryBtn" class="btn primary">Search Country</button>
+          </div>
+          <div class="info-block">
+            <h2 id="countryNameDisplay"></h2>
+            <p id="countryCapitalDisplay"></p>
+            <p id="countryRegionDisplay"></p>
+            <p id="countryPopulationDisplay"></p>
+          </div>
+            <p id="countryStatusMessage" class="status-message"></p>
+          <p class="hint">Open <code>homework.js</code></p>
+        </section>
+      </main>
+      <script src="homework.js"></script>
     <!-- STEP 11 — Add the status message -->
     <!-- Add a <p> element -->
     <!-- id: "countryStatusMessage" -->

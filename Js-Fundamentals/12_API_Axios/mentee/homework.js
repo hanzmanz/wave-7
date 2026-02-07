@@ -19,6 +19,14 @@
 //         - countryPopulationDisplay (id "countryPopulationDisplay")
 //         - countryStatusMessage (id "countryStatusMessage")
 
+const countryInput = document.getElementById("countryInput");
+const searchCountryBtn = document.getElementById("searchCountryBtn");
+const countryNameDisplay = document.getElementById("countryNameDisplay");
+const countryCapitalDisplay = document.getElementById("countryCapitalDisplay");
+const countryRegionDisplay = document.getElementById("countryRegionDisplay");
+const countryPopulationDisplay = document.getElementById("countryPopulationDisplay");
+const countryStatusMessage = document.getElementById("countryStatusMessage");
+
 // ==============================================
 // STEP 2 – ADD CLICK EVENT (ASYNC FUNCTION)
 // ==============================================
@@ -39,7 +47,43 @@
 //
 //         - Set countryStatusMessage.textContent to "Loading...".
 //         - Optionally reset the display fields to placeholders.
+searchCountryBtn.addEventListener("click", async function () {
+    const countryName = countryInput.value.trim();
+    if (countryName === "") {
+        countryStatusMessage.textContent = "Please type a country name.";
+        return;
+    } else {
+        const url =
+          "https://restcountries.com/v3.1/name/" +
+          encodeURIComponent(countryName) +
+          "?fields=name,capital,region,population";
+        countryStatusMessage.textContent = "Loading..."
+        countryStatusMessage.textContent = "Loading...";
+        countryNameDisplay.textContent = "Country: ...";
+        countryCapitalDisplay.textContent = "Capital: ...";
+        countryRegionDisplay.textContent = "Region: ...";
+        countryPopulationDisplay.textContent = "Population: ...";
 
+        try {
+            const response = await axios.get(url);
+            const countryData = response.data[0];
+            const name = countryData.name.common;
+            const capital = countryData.capital ? countryData.capital[0] : "N/A";
+            const region = countryData.region;
+            const population = countryData.population;
+            
+            countryNameDisplay.textContent = "Country: " + name;
+            countryCapitalDisplay.textContent = "Capital: " + capital;
+            countryRegionDisplay.textContent = "Region: " + region;
+            countryPopulationDisplay.textContent =
+              "Population: " + population.toLocaleString();
+            countryStatusMessage.textContent = "Country information loaded successfully.";
+        } catch (error) {
+            console.log(error);
+            countryStatusMessage.textContent = "Could not load country info. Please check the name and try again.";
+        }
+    }
+});
 // ==============================================
 // STEP 3 – AXIOS CALL + DATA HANDLING
 // ==============================================
