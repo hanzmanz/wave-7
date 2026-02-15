@@ -7,6 +7,7 @@
 - User can filter existing expenses by All or any of the 5 existing categories
 - User can convert currency in case of buying something in a foreign currency (LIMITATION: can only convert from EUR to other currencies using free API key)
 
+## Background
 I decided to build a personal budget tracker to better record my expenses throughout the month and identify where my money gets funneled to. I tried my best to include all the JavaScript concepts learnt in level 2 as well as all the required concepts for the level 2 final project:
 - DOM manipulation
 - localStorage persistence
@@ -15,7 +16,7 @@ I decided to build a personal budget tracker to better record my expenses throug
 - contact form
 - email
 
-Key learnings: 
+## Key learnings: 
 - Learnt (copied) how to create a summary blob and download it as a text file 
 - Learnt you can create functions and later add them on to an event listener using a dedicated function (line 679)
 - Learnt how to use display = none/block/flex to make stuff appear or disappear based on the current state
