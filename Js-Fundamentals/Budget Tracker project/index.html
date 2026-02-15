@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>💰 Personal Budget Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>💰 Personal Budget Tracker</h1>
+      <button id="toggleModeBtn" class="mode-btn">Dark Mode</button>
+      <div id="userInfoSection">
+        <form id="userForm">
+          <h2>Set Up Your Budget</h2>
+          <label for="userName">
+            Your Name
+            <input type="text" id="userName" required placeholder="Enter your name" />
+          </label>
+
+          <label for="monthlyBudget">
+            Monthly Budget ($)
+            <input type="number" id="monthlyBudget" required placeholder="3000" min="0" step="0.01" />
+          </label>
+
+          <label for="userEmail">
+            Email
+            <input type="email" id="userEmail" required placeholder="your@email.com" />
+          </label>
+
+          <button type="submit">Start Tracking</button>
+        </form>
+      </div>
+
+      <div id="userDisplay" class="user-display" style="display: none;">
+        <div class="user-info-card">
+          <h2>👤 <span id="displayName"></span>'s Budget</h2>
+          <p><strong>Monthly Budget:</strong> $<span id="displayBudget"></span></p>
+          <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+          <button id="resetUserBtn" class="secondary-btn">Reset User Info</button>
+        </div>
+      </div>
+
+      <!-- show spending by category -->
+      <div id="budgetOverview" class="budget-overview" style="display: none;">
+        <h2>📊 Budget Overview</h2>
+        
+        <!-- Total spent vs budget -->
+        <div class="total-summary">
+          <p><strong>Total Spent:</strong> $<span id="totalSpent">0.00</span></p>
+          <p><strong>Remaining:</strong> $<span id="remaining">0.00</span></p>
+        </div>
+
+        <!-- progress bar for overall budget -->
+        <div class="progress-container">
+          <div class="progress-bar" id="overallProgress"></div>
+        </div>
+        <p class="progress-label">Overall Budget Usage</p>
+
+        <div id="categoryBreakdown" class="category-breakdown">
+          <!-- Empty at first. Category cards will be added by javascript -->
+        </div>
+      </div>
+
+      <div id="actionButtons" class="action-buttons" style="display: none;">
+        <!-- button to download budget summary to record a snapshot or in case of no internet connection -->
+        <button id="downloadBtn" class="action-btn">📥 Download Summary (.txt)</button>
+        
+        <!-- button to email summary -->
+        <button id="emailBtn" class="action-btn">📧 Email Summary</button>
+      </div>
+
+      <!-- form to add new expenses -->
+      <div id="expenseFormSection" style="display: none;">
+        <h2>➕ Add New Expense</h2>
+        <form id="expenseForm">
+          
+          <!-- Label + input for expense item -->
+          <label for="expenseItem">
+            Expense Item
+            <input type="text" id="expenseItem" required placeholder="Grocery shopping" />
+          </label>
+
+          <!-- Label + input for cost -->
+          <label for="expenseCost">
+            Cost ($)
+            <input type="number" id="expenseCost" required placeholder="50.00" min="0" step="0.01" />
+          </label>
+
+          <!-- Label + dropdown for category -->
+          <label for="expenseCategory">
+            Category
+            <select id="expenseCategory" required>
+              <option value="">Select a category</option>
+              <option value="housing">🏠 Housing & Utilities</option>
+              <option value="food">🍔 Food</option>
+              <option value="transportation">🚗 Transportation</option>
+              <option value="lifestyle">🎉 Lifestyle & Personal</option>
+              <option value="savings">💎 Savings & Investments</option>
+            </select>
+          </label>
+
+          <!-- Button to submit the expense -->
+          <button type="submit">Add Expense</button>
+        </form>
+      </div>
+
+      <!-- dropdown to filter expenses by category -->
+      <div id="filterSection" style="display: none;">
+        <label for="filterCategory">
+          Filter by Category:
+          <select id="filterCategory">
+            <option value="all">All Categories</option>
+            <option value="housing">🏠 Housing & Utilities</option>
+            <option value="food">🍔 Food</option>
+            <option value="transportation">🚗 Transportation</option>
+            <option value="lifestyle">🎉 Lifestyle & Personal</option>
+            <option value="savings">💎 Savings & Investments</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- container to display all expenses -->
+      <div id="expensesSection" style="display: none;">
+        <h2>📝 Your Expenses</h2>
+        <div id="expensesList" class="expenses-list">
+          <!-- Empty at first. Expense cards will be added here by javascript -->
+        </div>
+      </div>
+      <div id="currencyConverterSection" class="currency-converter" style="display: none;">
+        <h2>💱 Currency Converter</h2>
+        <p class="converter-description">Convert amounts between different currencies using live exchange rates (free API key allows conversion from EUR only)</p>
+        
+        <form id="currencyForm">
+          <div class="currency-inputs">
+            <label for="fromCurrency">
+              From Currency
+              <input type="text" id="fromCurrency" placeholder="EUR" maxlength="3" required />
+            </label>
+
+            <label for="toCurrency">
+              To Currency
+              <input type="text" id="toCurrency" placeholder="USD" maxlength="3" required />
+            </label>
+
+            <label for="convertAmount">
+              Amount
+              <input type="number" id="convertAmount" placeholder="100" min="0" step="0.01" required />
+            </label>
+          </div>
+
+          <button type="submit" class="convert-btn">Convert Currency</button>
+        </form>
+
+        <!-- Conversion Result Display -->
+        <div id="conversionResult" class="conversion-result" style="display: none;">
+          <div class="result-box">
+            <p class="result-amount"><span id="resultAmount"></span></p>
+            <p class="result-rate">Exchange Rate: <span id="exchangeRate"></span></p>
+          </div>
+        </div>
+
+        <!-- Error Message Display -->
+        <div id="conversionError" class="conversion-error" style="display: none;"></div>
+      </div>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
